@@ -55,8 +55,8 @@ const Contact = () => {
             </h3>
             <div className="space-y-6">
               {[
-                { icon: <Mail className="text-blue-500" />, label: "Email", val: "lihini0511@gmail.com" },
-                { icon: <Phone className="text-blue-500" />, label: "Phone", val: "+94 71 387 3172" },
+                { icon: <Mail className="text-blue-500" />, label: "Email", val: "lihini0511@gmail.com", href: "mailto:lihini0511@gmail.com" },
+                { icon: <Phone className="text-blue-500" />, label: "Phone", val: "+94 71 387 3172", href: "tel:+94713873172" },
                 { icon: <MapPin className="text-blue-500" />, label: "Location", val: "Gampaha, Sri Lanka" },
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4 group">
@@ -65,7 +65,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{item.label}</p>
-                    <p className="text-white font-medium">{item.val}</p>
+                    {item.href ? (
+                      <a href={item.href} className="text-white font-medium hover:text-blue-400 transition-colors">
+                        {item.val}
+                      </a>
+                    ) : (
+                      <p className="text-white font-medium">{item.val}</p>
+                    )}
                   </div>
                 </div>
               ))}
