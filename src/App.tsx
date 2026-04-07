@@ -7,10 +7,12 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import MouseGlow from './components/MouseGlow';
+import FloatingSymbols from './components/FloatingSymbols';
 
 function App() {
   return (
     <div className="min-h-screen bg-[#020617] transition-colors duration-300 selection:bg-blue-500/30">
+      <FloatingSymbols />
       <MouseGlow />
       <Navbar />
       <main className="relative">
