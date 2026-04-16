@@ -20,9 +20,6 @@ const About = () => {
             <div className="neon-border-glow" />
             
             <div className="relative glass-dark rounded-[calc(1.5rem-2px)] overflow-hidden border border-white/10 h-full flex items-center justify-center group z-10">
-              {/* Dynamic Scanning Lines */}
-              <div className="scanning-line" style={{ animationDelay: '0s' }} />
-              <div className="scanning-line" style={{ animationDelay: '2s' }} />
               
               {/* Profile Image */}
               <img 
