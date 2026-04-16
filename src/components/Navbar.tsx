@@ -5,11 +5,42 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState('About');
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (id) {
+            const link = navLinks.find(l => l.href === `#${id}`);
+            if (link) setActiveItem(link.name);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    
+    navLinks.forEach(link => {
+      const element = document.querySelector(link.href);
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const navLinks = [
@@ -21,62 +52,40 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-[#020617]/80 backdrop-blur-lg border-b border-white/5' : 'py-6 bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-xl font-bold tracking-tighter cursor-pointer"
-        >
-          <span className="text-white">Lihini</span>
-          <span className="text-blue-500">.</span>
-          <span className="text-white/50">Dev</span>
-        </motion.div>
-
-        <div className="hidden md:flex items-center space-x-10">
+    <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 px-4 w-auto">
+      <motion.div 
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`flex items-center gap-1 p-1.5 rounded-full border border-white/10 backdrop-blur-xl bg-[#020617]/40 shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-white/20 ${scrolled ? 'scale-90 opacity-90' : 'scale-100'}`}
+      >
+        {/* Nav Links */}
+        <div className="flex items-center">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+              onMouseEnter={() => setHoveredItem(link.name)}
+              onMouseLeave={() => setHoveredItem(null)}
+              onClick={() => setActiveItem(link.name)}
+              className="relative px-4 sm:px-5 py-2 sm:py-2.5 text-[12px] sm:text-sm font-medium text-slate-400 hover:text-white transition-colors duration-300"
             >
-              {link.name}
+              {(hoveredItem === link.name || activeItem === link.name) && (
+                <motion.div
+                  layoutId="nav-pill"
+                  className="absolute inset-0 z-0 bg-gradient-to-r from-blue-600/80 to-cyan-500/80 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
+                    damping: 30
+                  }}
+                />
+              )}
+              <span className="relative z-10">{link.name}</span>
             </a>
           ))}
-          <a 
-            href="#contact" 
-            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-full transition-all shadow-lg shadow-blue-500/20"
-          >
-            Hire Me
-          </a>
         </div>
-
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
-          {isOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-[#020617] border-b border-white/10 px-4 py-8 space-y-6"
-          >
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                onClick={() => setIsOpen(false)}
-                className="block text-lg font-medium text-slate-400"
-              >
-                {link.name}
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </motion.div>
     </nav>
   );
 };

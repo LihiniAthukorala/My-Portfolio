@@ -13,19 +13,30 @@ const About = () => {
           className="relative aspect-square max-w-md mx-auto"
         >
           <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="relative glass-dark rounded-3xl overflow-hidden border border-white/10 h-full flex items-center justify-center group">
-            {/* Profile Image */}
-            <img 
-              src="https://github.com/LihiniAthukorala.png" 
-              alt="Lihini Athukorala" 
-              className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-              onError={(e) => {
-                e.currentTarget.src = "https://ui-avatars.com/api/?name=Lihini+Athukorala&background=020617&color=3B82F6&size=512";
-              }}
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-               <p className="text-white font-bold text-xl">Lihini Athukorala</p>
-               <p className="text-blue-400 text-sm">Full Stack Developer</p>
+          
+          <div className="relative neon-border-container h-full p-[2px]">
+            {/* Neon Motion Border */}
+            <div className="neon-border-trail" />
+            <div className="neon-border-glow" />
+            
+            <div className="relative glass-dark rounded-[calc(1.5rem-2px)] overflow-hidden border border-white/10 h-full flex items-center justify-center group z-10">
+              {/* Dynamic Scanning Lines */}
+              <div className="scanning-line" style={{ animationDelay: '0s' }} />
+              <div className="scanning-line" style={{ animationDelay: '2s' }} />
+              
+              {/* Profile Image */}
+              <img 
+                src="https://github.com/LihiniAthukorala.png" 
+                alt="Lihini Athukorala" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+                onError={(e) => {
+                  e.currentTarget.src = "https://ui-avatars.com/api/?name=Lihini+Athukorala&background=020617&color=3B82F6&size=512";
+                }}
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                 <p className="text-white font-bold text-xl">Lihini Athukorala</p>
+                 <p className="text-blue-400 text-sm">Full Stack Developer</p>
+              </div>
             </div>
           </div>
         </motion.div>

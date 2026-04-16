@@ -61,4 +61,49 @@
   .glass-dark {
     @apply backdrop-blur-xl bg-black/40 border border-white/5;
   }
+
+  .neon-border-container {
+    @apply relative overflow-hidden rounded-3xl;
+  }
+
+  .neon-border-trail {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      transparent 70%,
+      #3b82f6 100%
+    );
+    animation: neon-rotate 4s linear infinite;
+    transform-origin: center;
+    z-index: 0;
+  }
+
+  .neon-border-glow {
+    @apply absolute inset-0 opacity-50 blur-xl;
+    background: inherit;
+    z-index: -1;
+  }
+
+  @keyframes neon-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .scanning-line {
+    @apply absolute w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent;
+    animation: scan-line 4s linear infinite;
+    z-index: 10;
+  }
+
+  @keyframes scan-line {
+    0% { top: -10%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 110%; opacity: 0; }
+  }
 }
