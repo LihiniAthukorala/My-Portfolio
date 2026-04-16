@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+
   const [activeItem, setActiveItem] = useState('About');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
