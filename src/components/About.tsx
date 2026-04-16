@@ -49,15 +49,10 @@ const About = () => {
         >
           <div className="space-y-4">
             <p className="text-slate-400 leading-relaxed text-lg">
-              Hello! I'm Lihini Athukorala, a passionate Full-Stack Developer dedicated to building modern, 
-              scalable, and user-friendly web applications. With a strong foundation in JavaScript, 
-              React.js, Node.js, and the MERN stack, I enjoy turning ideas into real-world solutions through code.
+              Hello! I'm Lihini Athukorala, an undergraduate in Information Technology with a growing passion for full-stack development. I enjoy working on both frontend and backend technologies, building systems that are not only functional but also easy to use and efficient.
             </p>
             <p className="text-slate-400 leading-relaxed text-lg">
-              My journey in technology started with a curiosity about how digital systems work. 
-              Since then, I’ve developed my skills in both frontend and backend development, 
-              continuously learning and adapting to new technologies. I enjoy collaborating with teams, 
-              solving complex problems, and creating efficient systems that deliver a great user experience.
+              My interest in technology started with a curiosity about how systems work behind the scenes. Over time, I have developed my skills through hands-on projects, including web and mobile applications. I enjoy learning new technologies, working with others, and taking on challenges that help me grow as a developer. My goal is to continue improving my skills and contribute to meaningful, real-world software solutions.
             </p>
           </div>
 

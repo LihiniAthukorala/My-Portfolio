@@ -35,7 +35,7 @@ const Experience = () => {
   ];
 
   return (
-    <Section id="experience" title="Educational.Journey" subtitle="Compiling timeline history...">
+    <Section id="experience" title="Education Journey" subtitle="Compiling timeline history...">
       <div className="max-w-3xl mx-auto space-y-8 relative">
         <div className="absolute left-0 md:left-1/2 top-4 bottom-4 w-px bg-white/5 hidden md:block" />
         

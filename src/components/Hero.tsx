@@ -61,9 +61,7 @@ const Hero = () => {
           </div>
 
           <p className="max-w-2xl mx-auto text-slate-500 text-lg leading-relaxed pt-4">
-            Hello! I'm Lihini Athukorala, a passionate Full-Stack Developer dedicated to building modern, 
-            scalable, and user-friendly web applications. With a strong foundation in JavaScript, 
-            React.js, Node.js, and the MERN stack, I love turning ideas into reality through code.
+            Full-Stack Developer focused on building modern, scalable, and user-friendly web applications using the MERN stack. Passionate about creating efficient solutions and turning ideas into real-world products.
           </p>
 
           <div className="flex flex-col items-center gap-8 pt-10">

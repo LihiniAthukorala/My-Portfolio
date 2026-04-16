@@ -72,7 +72,7 @@ const Skills = () => {
   ];
 
   return (
-    <Section id="skills" title="Technical.Arsenal" subtitle="Scanning skill clusters...">
+    <Section id="skills" title="Technical Arsenal" subtitle="Scanning skill clusters...">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((cat, idx) => (
           <motion.div

@@ -40,7 +40,7 @@ const Contact = () => {
   };
 
   return (
-    <Section id="contact" title="Communication.Node" subtitle="Establishing connection protocols...">
+    <Section id="contact" title="Contact Me" subtitle="Establishing connection protocols...">
       <div className="grid md:grid-cols-2 gap-12">
         <motion.div
            initial={{ opacity: 0, x: -20 }}
