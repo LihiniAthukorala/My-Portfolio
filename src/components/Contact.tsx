@@ -114,6 +114,8 @@ const Contact = () => {
                       type="email" 
                       name="email"
                       required
+                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                      title="Please enter a valid email address (e.g. name@example.com or name@sliit.lk)"
                       className="w-full bg-[#020617] border border-white/10 rounded-xl px-4 py-3 text-white focus:border-blue-500/50 outline-none transition-all placeholder:text-slate-800" 
                       placeholder="ADDR..." 
                    />
